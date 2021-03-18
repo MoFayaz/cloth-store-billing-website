@@ -22,6 +22,7 @@ export const BillingForm = () => {
 
     return (
         <div className="billingFormContainer">
+            {/*Form component*/}
             <form className="formContainer" > 
                 <div>
 				   <label>Name</label>
@@ -121,6 +122,8 @@ export const BillingForm = () => {
 
 				<Button variant="contained" color="default" className="formSubmitBtn" type="submit">Submit</Button>
 			</form>
+
+		       {/*Card component*/}
 
 				 <Card className={classes.root}>
     			   <CardActionArea>
