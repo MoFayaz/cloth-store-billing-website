@@ -1,8 +1,24 @@
 import React from 'react'
-import { Button } from '@material-ui/core'
+import { Button, Typography, Card, CardActionArea, CardActions, CardContent, CardMedia, makeStyles } from '@material-ui/core'
 import "./BillingForm.css"
 
+const useStyles = makeStyles({
+    root: {
+        maxWidth: 500,
+        width: 400,
+        height: 600,
+        marginTop: 50,
+        marginLeft: 50
+    },
+    media: {
+        height: 500,
+        width: '100%',
+        objectFit: 'cover'
+    },
+});
+
 export const BillingForm = () => {
+    const classes = useStyles();
 
     return (
         <div className="billingFormContainer">
@@ -105,6 +121,24 @@ export const BillingForm = () => {
 
 				<Button variant="contained" color="default" className="formSubmitBtn" type="submit">Submit</Button>
 			</form>
+
+				 <Card className={classes.root}>
+    			   <CardActionArea>
+    			     <CardMedia
+    			       className={classes.media}
+             		   image="https://rukminim1.flixcart.com/image/714/857/jped7rk0/sari/q/a/j/free-omt303b-model-madness-original-imafbnz5ztzfbqch.jpeg?q=50"
+    			       title="Model Image"
+           		           />
+   			   		 <CardContent>
+           		       <Typography gutterBottom variant="h5" component="h2">
+    			         Cotton Saree
+    			       </Typography>
+    			       <Typography variant="body2" color="textSecondary" component="p">
+    			         Pattu baarambariyam
+    			       </Typography>
+    			     </CardContent>
+    			   </CardActionArea>
+    			 </Card>
 		</div>
     )
 }
