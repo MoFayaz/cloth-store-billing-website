@@ -32,8 +32,11 @@
 }
 
 .formSubmitBtn {
-    width: 5rem;
+    width: 100%;
     font-family: 'Roboto', sans-serif;
 }
 
-/*hi*/
+/*.weeklyText,
+.monthlyText {
+    padding-left: 2rem;
+}*/

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Typography, Card, CardActionArea, CardActions, CardContent, CardMedia, makeStyles } from '@material-ui/core'
+import { Button, Typography, Card, CardActionArea, CardContent, CardMedia, makeStyles } from '@material-ui/core'
 import "./BillingForm.css"
 
 const useStyles = makeStyles({
@@ -84,20 +84,21 @@ export const BillingForm = () => {
 				   <input required type="date" />
 				</div>
 
-				<div>
-				   <label>Daily</label>
-				   <input  type="checkbox" />
+				<div style={{textAlign: 'center'}} >
+				   <span style={{paddingRight: 10 + 'px',paddingLeft: 10 + 'px'}}>Daily</span>
+				   <input className="dailyCheckbox"  type="checkbox" />
 				   
-				   <label>Weekly</label>
+				   <span style={{paddingRight: 10 + 'px',paddingLeft: 10 + 'px'}} className="weeklyText">Weekly</span>
 				   <input type="checkbox" />
 				   
-				   <label>Monthly</label>
+				   <span style={{paddingRight: 10 + 'px',paddingLeft: 10 + 'px'}} className="monthlyText">Monthly</span>
 				   <input type="checkbox" />
 				   
 				</div>
 
 				<div>
 				   <label>Advance Amount</label>
+				   <input className="textField" type="text" value="30$" disabled/>
 				</div>
 
 				<div>
@@ -120,7 +121,9 @@ export const BillingForm = () => {
 				   <input required className="textField" type="number"/>
 				</div>
 
-				<Button variant="contained" color="default" className="formSubmitBtn" type="submit">Submit</Button>
+				<div style={{textAlign: 'center', marginTop: 2 + 'rem'}}>
+				<Button variant="contained" color="secondary" className="formSubmitBtn" type="submit">Submit</Button>
+				</div>
 			</form>
 
 		       {/*Card component*/}
