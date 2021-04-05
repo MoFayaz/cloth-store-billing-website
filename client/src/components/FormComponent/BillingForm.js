@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Typography, Card, CardActionArea, CardContent, CardMedia, makeStyles } from '@material-ui/core'
 import "./BillingForm.css"
 
@@ -20,6 +20,8 @@ const useStyles = makeStyles({
 export const BillingForm = () => {
     const classes = useStyles();
 
+    const [products, setProducts] = useState([]);
+
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Token 0ae2038ae3705816dedf9e66f0e4db458825ba62");
     myHeaders.append('Content-Type', 'application/json')
@@ -33,8 +35,9 @@ export const BillingForm = () => {
     useEffect(() => {
         fetch("http://127.0.0.1:8000/", requestOptions)
             .then(response => response.json())
-            .then(result => console.log(result))
+            .then(result => setProducts(result))
             .catch(error => console.error('error', error));
+        console.log(products)
     }, [])
 
 
