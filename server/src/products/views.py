@@ -8,6 +8,7 @@ from .models import Product
 
 # Create your views here.
 
+
 class TestView(APIView):
 
     permission_classes = (IsAuthenticated, )

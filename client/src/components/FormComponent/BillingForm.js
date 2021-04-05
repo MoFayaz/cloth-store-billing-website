@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Typography, Card, CardActionArea, CardContent, CardMedia, makeStyles } from '@material-ui/core'
 import "./BillingForm.css"
 
@@ -19,6 +19,24 @@ const useStyles = makeStyles({
 
 export const BillingForm = () => {
     const classes = useStyles();
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Token 0ae2038ae3705816dedf9e66f0e4db458825ba62");
+    myHeaders.append('Content-Type', 'application/json')
+
+
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders
+    };
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/", requestOptions)
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(error => console.error('error', error));
+    }, [])
+
 
     return (
         <div className="billingFormContainer">
@@ -52,7 +70,7 @@ export const BillingForm = () => {
 				<div>
 				   <label>Size & Fit</label>
 				   <select required>
-				       <option disabled selected>Select the size</option>
+				       <option disabled defaultValue>Select the size</option>
 					   <option>2XL</option>
 					   <option>3XL</option>
 					   <option>4XL</option>
