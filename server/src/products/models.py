@@ -5,9 +5,11 @@ class Product(models.Model):
 
     code = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
-    size = models.CharField(max_length=1)
+    image = models.CharField(max_length=255)
     price = models.PositiveIntegerField(null=False)
-    image = models.CharField(max_length=50)
+    size = models.CharField(max_length=3)
+    status = models.BooleanField(default=False)
+    stock_volume = models.PositiveIntegerField(null=False)
 
     def __str__(self):
         return self.name
