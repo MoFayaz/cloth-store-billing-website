@@ -6,7 +6,7 @@ from .models import Product
 
 # Create your views here.
 
-class TestView(APIView):
+class ProductView(APIView):
     def get(self, request, *args, **kwargs):
         qs = Product.objects.all()
         serializer = ProductSerializer(qs, many=True)
@@ -18,3 +18,9 @@ class TestView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors)
+
+class SumaView(APIView):
+    def get(self, request, *args, **kwargs):
+        qs = Product.objects.all()
+        serializer = ProductSerializer(qs, many=True)
+        return Response(serializer.data)
