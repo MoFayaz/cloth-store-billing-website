@@ -19,7 +19,7 @@ class ProductView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors)
 
-class SumaView(APIView):
+class ProductView(APIView):
     def get(self, request, *args, **kwargs):
         qs = Product.objects.all()
         serializer = ProductSerializer(qs, many=True)
