@@ -22,6 +22,19 @@ class ProductView(mixins.ListModelMixin, mixins.CreateModelMixin ,generics.Gener
         return self.create(request, *args, **kwargs)
         
 
+# class ProductListView(APIView):
+#     def get(self, request, *args, **kwargs):
+#         qs = Product.objects.all()
+#         serializer = ProductSerializer(qs, many=True)
+#         return Response(serializer.data)
+
+class ProductCodeView(APIView):
+    def get(self, request, pcode, *args, **kwargs):
+        qs = Product.objects.filter(code__exact=pcode)
+        serializer = ProductSerializer(qs, many=True)
+        return Response(serializer.data)
+
+
 # class ProductView(APIView):
 #     def get(self, request, *args, **kwargs):
 #         qs = Product.objects.all()
