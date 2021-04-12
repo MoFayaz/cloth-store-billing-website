@@ -5,13 +5,10 @@ class Product(models.Model):
 
     code = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
-    image = models.FileField(upload_to='uploads/')
+    image = models.FileField(upload_to='uploads/images/')
     price = models.PositiveIntegerField(null=False)
     size = models.CharField(max_length=3)
     
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return reverse("Product_detail", kwargs={"pk": self.pk})
