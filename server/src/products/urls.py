@@ -3,5 +3,6 @@ from .views import ProductView
 
 
 urlpatterns = [
-    path('products/', ProductView.as_view(), name = 'test')
+    path('product/', ProductView.as_view(), name = 'test'),
+    path('products/<string:pcode>')
 ]
