@@ -1,0 +1,42 @@
+.textField {
+    outline: 0;
+    width: 20rem;
+    display: inline-block;
+}
+
+.billingFormContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.formContainer {
+    margin-top: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+.formContainer>div {
+    margin-top: 20px;
+}
+
+.formContainer>div>input:not(input[type="checkbox"]),
+.formContainer>div>select {
+    margin-left: 4rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 8px;
+}
+
+.formContainer>div>label {
+    width: 240px;
+    display: inline-block;
+}
+
+.formSubmitBtn {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*.weeklyText,
+.monthlyText {
+    padding-left: 2rem;
+}*/
