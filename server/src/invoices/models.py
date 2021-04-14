@@ -28,7 +28,7 @@ class Invoice(models.Model):
     paidAmount          = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.name
+        return self.invoiceId
 
     def get_absolute_url(self):
         return reverse("Invoice_detail", kwargs={"pk": self.pk})

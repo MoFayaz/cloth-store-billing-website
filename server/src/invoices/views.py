@@ -12,8 +12,8 @@ from rest_framework.response import Response
 # Create your views here.
 class InvoiceDetailView(APIView):
     def get(self, request, icode, *args, **kwargs):
-        qs = Invoice.objects.filter(code__exact=icode)
-        serializer = InvoiceSerializer(qs, many=False)
+        qs = Invoice.objects.filter(invoiceId__exact=icode)
+        serializer = InvoiceSerializer(qs, many=True)
         return Response(serializer.data)
 
 class InvoiceView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
