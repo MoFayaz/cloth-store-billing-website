@@ -1,5 +1,5 @@
 from django.db import models
-from products.models import Product
+from datetime import date
 from django.urls import reverse
 
 
@@ -8,6 +8,7 @@ from django.urls import reverse
 class Invoice(models.Model):
 
     invoiceId           = models.CharField(max_length=50, null=False)
+    invoiceDate         = models.DateField(auto_now_add=True)
     customerName        = models.CharField(max_length=50, null=False)
     customerEmail       = models.EmailField(max_length=254, null=False)
     productCode         = models.CharField(max_length=50, null= False)
@@ -15,7 +16,7 @@ class Invoice(models.Model):
     productSize         = models.CharField(max_length=50, null=False)
     productPrice        = models.PositiveIntegerField(null=False)
     quantity            = models.PositiveIntegerField(default=1)
-    occasionDate        = models.DateField(null=False,auto_now=False, auto_now_add=False)
+    occasionDate        = models.DateField(null=False, auto_now_add=False)
     returnDate          = models.DateField(null=False,auto_now=False, auto_now_add=False)
     returnTime          = models.TimeField(auto_now=False, auto_now_add=False)
     rentalChoice        = models.CharField(max_length=50)
