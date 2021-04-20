@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Typography, Card, CardActionArea, CardContent, CardMedia, makeStyles } from '@material-ui/core'
+import { Button, Typography, Card, CardActionArea, CardContent, CardMedia, makeStyles, Modal } from '@material-ui/core'
 import "./BillingForm.css"
 
 const useStyles = makeStyles({
@@ -15,10 +15,43 @@ const useStyles = makeStyles({
         width: '100%',
         objectFit: 'cover'
     },
+    paper: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: 'white',
+        border: 'none',
+        outline: 'none',
+        boxShadow: 'black',
+        padding: 150,
+
+    },
 });
+
+function getModalStyle() {
+    const top = 50;
+    const left = 50;
+
+    return {
+        top: `${top}%`,
+        left: `${left}%`,
+        transform: `translate(-${top}%, -${left}%)`,
+    };
+}
+
 
 export const BillingForm = () => {
     const classes = useStyles();
+
+    const [modalStyle] = React.useState(getModalStyle);
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const [customerName, setCustomerName] = useState('')
     const [customerEmail, setCustomerEmail] = useState('')
@@ -362,6 +395,26 @@ export const BillingForm = () => {
                         
                         ))}
 
+
+            <div>
+              <Button variant="contained" type="button" onClick={handleOpen}>
+                Invoice
+              </Button>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                >
+                <div style={modalStyle} className={classes.paper}>
+                  <h2 id="simple-modal-title">Text in a modal</h2>
+                  <p id="simple-modal-description">
+                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                  </p>
+                  {/*<SimpleModal />*/}
+                </div>
+              </Modal>
+            </div>
                  
         </div>
     )
