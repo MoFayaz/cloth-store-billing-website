@@ -47,6 +47,7 @@ export const InvoiceModal = () => {
         fetch('http://127.0.0.1:8000/invoice/' + getInvoiceCode.toUpperCase())
             .then(async response => await response.json())
             .then(data => {
+            if(data.length != 0){
                 console.log(data)
 
                 const doc = new jsPDF('landscape');
@@ -99,6 +100,7 @@ export const InvoiceModal = () => {
                 })
 
                 doc.save(String(data[0].invoiceId));
+            } else { alert("Invalid Code!") }
             })
     }
     console.log(String(454))
