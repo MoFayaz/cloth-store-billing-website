@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Typography, Card, CardActionArea, CardContent, CardMedia, makeStyles, Modal } from '@material-ui/core'
 import "./BillingForm.css"
+import { InvoiceModal } from "../InvoiceModal/InvoiceModal"
 
 const useStyles = makeStyles({
     root: {
@@ -15,43 +16,13 @@ const useStyles = makeStyles({
         width: '100%',
         objectFit: 'cover'
     },
-    paper: {
-        position: 'absolute',
-        width: 400,
-        backgroundColor: 'white',
-        border: 'none',
-        outline: 'none',
-        boxShadow: 'black',
-        padding: 150,
 
-    },
 });
 
-function getModalStyle() {
-    const top = 50;
-    const left = 50;
-
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
 
 
 export const BillingForm = () => {
     const classes = useStyles();
-
-    const [modalStyle] = React.useState(getModalStyle);
-    const [open, setOpen] = useState(false);
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
 
     const [customerName, setCustomerName] = useState('')
     const [customerEmail, setCustomerEmail] = useState('')
@@ -62,6 +33,7 @@ export const BillingForm = () => {
     const [returnDate, setReturnDate] = useState('')
     const [returnTime, setReturnTime] = useState('')
     const [paidAmount, setPaidAmount] = useState(0)
+    const [imageLink, setImageLink] = useState('')
 
     const [products, setProducts] = useState([]);
     const [findProd, setFindProd] = useState('');
@@ -167,6 +139,7 @@ export const BillingForm = () => {
                         setProductCode(result[0].code)
                         setProductName(result[0].name)
                         setPrice(result[0].price)
+                        setImageLink(result[0].image)
                         setProductSize(result[0].size)
                     }
                 })
@@ -186,7 +159,7 @@ export const BillingForm = () => {
     postHeaders.append('Content-Type', 'application/json')
     postHeaders.append('Accept', 'application/json')
 
-    const invoiceId = customerName.toUpperCase() + productCode.toString() + occasionDate.toString()
+    const invoiceId = customerName.trim().toUpperCase() + productCode.toString() + occasionDate.toString()
     const postRequestOptions = {
         method: 'POST',
         headers: postHeaders,
@@ -202,7 +175,7 @@ export const BillingForm = () => {
             occasionDate: occasionDate,
             returnDate: returnDate,
             returnTime: returnTime,
-            rentalChoice: "later",
+            imageLink: imageLink,
             advanceAmount: advancePrice,
             rentalAmount: rentalCheck,
             refundAmount: refundAmount,
@@ -272,7 +245,7 @@ export const BillingForm = () => {
 
                 <div>
                    <label>Product ID</label>
-                   <input onChange={(e) => setFindProd(e.target.value)} required className="textField" type="text" />
+                   <input value={findProd.toUpperCase()} onChange={(e) => setFindProd(e.target.value)} required className="textField" type="text" />
                 </div>
 
                 <div>
@@ -397,23 +370,7 @@ export const BillingForm = () => {
 
 
             <div>
-              <Button variant="contained" type="button" onClick={handleOpen}>
-                Invoice
-              </Button>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                >
-                <div style={modalStyle} className={classes.paper}>
-                  <h2 id="simple-modal-title">Text in a modal</h2>
-                  <p id="simple-modal-description">
-                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                  </p>
-                  {/*<SimpleModal />*/}
-                </div>
-              </Modal>
+              <InvoiceModal/>
             </div>
                  
         </div>
