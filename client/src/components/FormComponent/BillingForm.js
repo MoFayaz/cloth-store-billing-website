@@ -134,14 +134,13 @@ export const BillingForm = () => {
             fetch("http://127.0.0.1:8000/products/" + findProd.toUpperCase(), requestOptions)
                 .then(response => response.json())
                 .then(result => {
-                    if (result.length != 0) {
                         setProducts(result)
                         setProductCode(result[0].code)
                         setProductName(result[0].name)
                         setPrice(result[0].price)
                         setImageLink(result[0].image)
                         setProductSize(result[0].size)
-                    }
+                    
                 })
                 .catch(error => console.error('error', error));
             console.log(products)
