@@ -14,7 +14,14 @@ Project is created with:
 * Django 3.1.7 (Backend)
 * MySQL 8.0
 * Bootstrap 4 
-	
+
+## Structure
+
+| Codebase             |      Description      |
+| :------------------- | :-------------------: |
+| [Client](client)       |      React JS frontend      |
+| [Server](server) |     Django API      |
+
 ## Setup
 To run the client:
 ```
@@ -28,9 +35,4 @@ python manage.py runserver
 ```
 Note: Change the database configuration in server/src/wege/settings.py  DATABASES.
 
-## Structure
 
-| Codebase             |      Description      |
-| :------------------- | :-------------------: |
-| [Client](client)       |      React JS frontend      |
-| [Server](server) |     Django API      |
