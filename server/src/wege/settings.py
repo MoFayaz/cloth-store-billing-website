@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'n%5w$$-ja1t7^(b4534fpp+ajr@+qdh%3306g_(m3qh^bjyol%'
+#Change this
+SECRET_KEY = 'SECURITY_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -85,15 +86,15 @@ WSGI_APPLICATION = 'wege.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+#Configure it 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodb',
-        'USER': 'root',
-        'PASSWORD': 'yazadmin694',
-        'PORT': '3306',
-        'HOST': 'localhost',
+        'NAME': 'NAME',
+        'USER': 'USER',
+        'PASSWORD': 'PASSWORD',
+        'PORT': 'PORT',
+        'HOST': 'HOST',
     }
 }
 
