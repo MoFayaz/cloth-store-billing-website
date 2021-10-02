@@ -1,5 +1,5 @@
 # Rental Store Billing Calculation 
-<!-- Placing the order  -->
+
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
@@ -7,6 +7,12 @@
 * [Setup](#setup)
 
 ## General info
+A billing page of a cloth store which enables 
+* Can get the product for purchase by product's unique ID
+* Can choose quantity, size & variants of that product.
+* Can select how many days for rental of that product
+* It calculates the Rental amount (Daily/Weekly/Monthly), Advance amount & Maintenance amount, According to the number of days users chose.
+* After the placement of order, User can get the invoice in pdf form
 	
 ## Technologies
 Project is created with:
